@@ -1,1 +1,3 @@
-add_subdirectory(composite)
+add_executable(composite
+    composite/main.cc
+)
