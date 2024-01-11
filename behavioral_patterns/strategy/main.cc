@@ -56,12 +56,6 @@
  */
 
 /**
- * Step 1: The Strategy interface declares operations common to all supported
- * versions of some algorithm. The Context uses this interface to call the
- * algorithm defined by Concrete Strategies.
- */
-
-/**
  * @brief Strategy
  */
 class Strategy {
@@ -92,16 +86,6 @@ class Strategy {
  * @brief Context defines the interface of interest to clients.
  */
 class Context {
- private:
-  /**
-   * @brief strategy
-   *
-   * The Context maintains a reference to one of the Strategy objects. The
-   * Context does not know the concrete class of a strategy. It should work with
-   * all strategies via the Strategy interface.
-   */
-  std::unique_ptr<Strategy> strategy_;
-
  public:
   /**
    * @brief Constructor
@@ -135,18 +119,24 @@ class Context {
   void do_something() const {
     if (!strategy_) {
       std::cout << "Context: Strategy isn't set\n";
+      return;
     }
 
     std::cout << "Context: Execute strategy:\n";
     strategy_->execute();
     std::cout << "\n";
   }
-};
 
-/**
- * Step3: Concrete Strategies implement the algorithm while following the base
- * Strategy interface. The interface makes them interchangeable in the Context.
- */
+ private:
+  /**
+   * @brief strategy
+   *
+   * The Context maintains a reference to one of the Strategy objects. The
+   * Context does not know the concrete class of a strategy. It should work with
+   * all strategies via the Strategy interface.
+   */
+  std::unique_ptr<Strategy> strategy_;
+};
 
 /**
  * @brief ConcreteStrategyA inherites from Strategy
@@ -221,20 +211,24 @@ class ConcreteStrategyB : public Strategy {
   const char *internal_char_{nullptr};
 };
 
-/**
- * Step 5: The client code picks a concrete strategy and passes it to the
- * context. The client should be aware of the differences between strategies in
- * order to make the right choice.
- */
 void client_run() {
-  Context context(std::make_unique<ConcreteStrategyA>(100));
-  std::cout << "Client: Running using Strategy A.\n";
-  context.do_something();
-  std::cout << "\n";
+  {
+    Context context(nullptr);
+    std::cout << "Client: Running without Strategy.\n";
+    context.do_something();
+    std::cout << "\n";
+  }
 
-  std::cout << "Client: Running using Strategy B.\n";
-  context.set_strategy(std::make_unique<ConcreteStrategyB>("abcd"));
-  context.do_something();
+  {
+    Context context(std::make_unique<ConcreteStrategyA>(100));
+    std::cout << "Client: Running using Strategy A.\n";
+    context.do_something();
+    std::cout << "\n";
+
+    std::cout << "Client: Running using Strategy B.\n";
+    context.set_strategy(std::make_unique<ConcreteStrategyB>("abcd"));
+    context.do_something();
+  }
 }
 
 int main() {
