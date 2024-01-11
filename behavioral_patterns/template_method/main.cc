@@ -1,5 +1,43 @@
 #include <cstdio>
-#include <cstring>
+
+/**
+ * @brief Template Method is a behavioral design pattern that defines the
+ * skeleton of an algorithm in the superclass but lets subclasses override
+ * specific steps of the algorithm without changing its structure.
+ *
+ * # Problem: Creating an application that analyses documents, and extracts
+ * data. These document are in various formats (PDF, DOC, CSV, ...). For
+ * different types of document formats, the algorithms to analyse useful
+ * information are the same, but data extraction and data parsing are different.
+ * => Create a Template method (class) that breaks algorithm into many steps,
+ * and modifies the bahaviors based on concrete classes.
+ *
+ * # Applicability:
+ *  + When letting clients to extend only particular steps of an algorithm, not
+ * the whole algorithm.
+ *  + When having several classes with almost identical algorithm.
+ *
+ * # Pros & Cons:
+ *  + Pros: - Override certain parts of a large algorithm.
+ *          - Put duplicate code in super class.
+ *  + Cons: - limited by the provided algorithm.
+ *          - Violates "Liskov Substitution Principle" (when assuming pre/post
+ *            condition of each step)
+ */
+
+/**
+ * # Implementation:
+ *
+ * Step 1: The Abstract Class declares methods that act as steps of an
+ * algorithm, as well as the actual template method which calls these methods in
+ * a specific order. The steps may either be declared abstract or have some
+ * default implementation.
+ *
+ * Step 2: Concrete Classes can override all of the steps, but not the template
+ * method itself.
+ */
+
+////////////////////////////////////////////////////////////
 
 /**
  * @brief AbstractClass name
