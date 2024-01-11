@@ -1,4 +1,20 @@
-#include <iostream>
+#include <cstdio>
+#include <cstring>
+
+/**
+ * @brief AbstractClass name
+ */
+static const char *cAbstractClassName{"AbstractClass"};
+
+/**
+ * @brief ConcreteClass1 name
+ */
+static const char *cConcreteClass1Name{"ConcreteClass1"};
+
+/**
+ * @brief ConcreteClass2 name
+ */
+static const char *cConcreteClass2Name{"ConcreteClass2"};
 
 /**
  * @brief The Abstract Class defines a template method that contains a skeleton
@@ -27,10 +43,10 @@ class AbstractClass {
    * Step 1 & 2 (Base operations)
    */
   void execute_step_1() const {
-    std::cout << "AbstractClass: Implements step 1\n";
+    fprintf(stdout, "%s: Implements step 1\n", cAbstractClassName);
   }
   void execute_step_2() const {
-    std::cout << "AbstractClass: Implements step 2\n";
+    fprintf(stdout, "%s: Implements step 2\n", cAbstractClassName);
   }
 
   /**
@@ -50,7 +66,7 @@ class AbstractClass {
  * @brief Concrete class 2
  *
  * This class overrides required steps (3 & 4), and uses default implementation
- * of step 5
+ * of step 5 & 6
  */
 class ConcreteClass1 : public AbstractClass {
  protected:
@@ -58,11 +74,11 @@ class ConcreteClass1 : public AbstractClass {
    * Override step 3 4 (required)
    */
   void execute_step_3() const override {
-    std::cout << "ConcreteClass1: Implements step 3\n";
+    fprintf(stdout, "%s: Implements step 3\n", cConcreteClass1Name);
   }
 
   void execute_step_4() const override {
-    std::cout << "ConcreteClass1: Implemented step 4\n";
+    fprintf(stdout, "%s: Implements step 4\n", cConcreteClass1Name);
   }
 };
 
@@ -77,18 +93,18 @@ class ConcreteClass2 : public AbstractClass {
    * Override step 3 4 (required)
    */
   void execute_step_3() const override {
-    std::cout << "ConcreteClass2: Implements step 3\n";
+    fprintf(stdout, "%s: Implements step 3\n", cConcreteClass2Name);
   }
 
   void execute_step_4() const override {
-    std::cout << "ConcreteClass2: Implemented step 4\n";
+    fprintf(stdout, "%s: Implements step 4\n", cConcreteClass2Name);
   }
 
   /**
    * Override step 5
    */
   void execute_step_5() const override {
-    std::cout << "ConcreteClass2: Implemented step 5\n";
+    fprintf(stdout, "%s: Implements step 5\n", cConcreteClass2Name);
   }
 };
 
@@ -100,12 +116,12 @@ class ConcreteClass2 : public AbstractClass {
 void run_client(AbstractClass *obj) { obj->execute_algorithm(); }
 
 int main() {
-  std::cout << "Same client code can work with different subclasses:\n";
+  fprintf(stdout, "Same client code can work with different subclasses:\n");
   ConcreteClass1 concrete_class_1 = ConcreteClass1();
   run_client(&concrete_class_1);
-  std::cout << "\n";
+  fprintf(stdout, "\n");
 
-  std::cout << "Same client code can work with different subclasses:\n";
+  fprintf(stdout, "Same client code can work with different subclasses:\n");
   ConcreteClass2 concrete_class_2 = ConcreteClass2();
   run_client(&concrete_class_2);
 
