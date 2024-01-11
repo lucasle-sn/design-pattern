@@ -64,6 +64,12 @@ static const char *cConcreteClass2Name{"ConcreteClass2"};
  */
 class AbstractClass {
  public:
+  AbstractClass() = default;
+  AbstractClass(const AbstractClass &) = delete;
+  AbstractClass(AbstractClass &&) = delete;
+
+  virtual ~AbstractClass() = default;
+
   /**
    * @brief The template method defines the skeleton of an algorithm.
    */
@@ -107,6 +113,15 @@ class AbstractClass {
  * of step 5 & 6
  */
 class ConcreteClass1 : public AbstractClass {
+ public:
+  ConcreteClass1() = default;
+  ConcreteClass1(const ConcreteClass1 &) = delete;
+  ConcreteClass1(ConcreteClass1 &&) = delete;
+  ConcreteClass1 operator=(const ConcreteClass1 &) = delete;
+  ConcreteClass1 operator=(ConcreteClass1 &&) = delete;
+
+  ~ConcreteClass1() = default;
+
  protected:
   /**
    * Override step 3 4 (required)
@@ -126,6 +141,15 @@ class ConcreteClass1 : public AbstractClass {
  * This class overrides required steps (3 & 4), and some optional steps (5)
  */
 class ConcreteClass2 : public AbstractClass {
+ public:
+  ConcreteClass2() = default;
+  ConcreteClass2(const ConcreteClass2 &) = delete;
+  ConcreteClass2(ConcreteClass2 &&) = delete;
+  ConcreteClass2 operator=(const ConcreteClass2 &) = delete;
+  ConcreteClass2 operator=(ConcreteClass2 &&) = delete;
+
+  ~ConcreteClass2() = default;
+
  protected:
   /**
    * Override step 3 4 (required)
@@ -155,12 +179,12 @@ void run_client(AbstractClass *obj) { obj->execute_algorithm(); }
 
 int main() {
   fprintf(stdout, "Same client code can work with different subclasses:\n");
-  ConcreteClass1 concrete_class_1 = ConcreteClass1();
+  ConcreteClass1 concrete_class_1;
   run_client(&concrete_class_1);
   fprintf(stdout, "\n");
 
   fprintf(stdout, "Same client code can work with different subclasses:\n");
-  ConcreteClass2 concrete_class_2 = ConcreteClass2();
+  ConcreteClass2 concrete_class_2;
   run_client(&concrete_class_2);
 
   return 0;
