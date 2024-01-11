@@ -64,10 +64,17 @@ static const char *cConcreteClass2Name{"ConcreteClass2"};
  */
 class AbstractClass {
  public:
+  /**
+   * @brief Constructor
+   */
   AbstractClass() = default;
+
   AbstractClass(const AbstractClass &) = delete;
   AbstractClass(AbstractClass &&) = delete;
 
+  /**
+   * @brief Destructor
+   */
   virtual ~AbstractClass() = default;
 
   /**
@@ -114,12 +121,19 @@ class AbstractClass {
  */
 class ConcreteClass1 : public AbstractClass {
  public:
+  /**
+   * @brief Constructor
+   */
   ConcreteClass1() = default;
+
   ConcreteClass1(const ConcreteClass1 &) = delete;
   ConcreteClass1(ConcreteClass1 &&) = delete;
   ConcreteClass1 operator=(const ConcreteClass1 &) = delete;
   ConcreteClass1 operator=(ConcreteClass1 &&) = delete;
 
+  /**
+   * @brief Destructor
+   */
   ~ConcreteClass1() = default;
 
  protected:
@@ -142,12 +156,19 @@ class ConcreteClass1 : public AbstractClass {
  */
 class ConcreteClass2 : public AbstractClass {
  public:
+  /**
+   * @brief Constructor
+   */
   ConcreteClass2() = default;
+
   ConcreteClass2(const ConcreteClass2 &) = delete;
   ConcreteClass2(ConcreteClass2 &&) = delete;
   ConcreteClass2 operator=(const ConcreteClass2 &) = delete;
   ConcreteClass2 operator=(ConcreteClass2 &&) = delete;
 
+  /**
+   * @brief Destructor
+   */
   ~ConcreteClass2() = default;
 
  protected:
