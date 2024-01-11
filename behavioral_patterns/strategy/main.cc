@@ -1,5 +1,4 @@
-#include <cstring>
-#include <iostream>
+#include <cstdio>
 #include <memory>
 
 /**
@@ -54,6 +53,8 @@
  * context. The context exposes a setter which lets clients replace the strategy
  * associated with the context at runtime.
  */
+
+//////////////////////////////////////////////////////////////////////
 
 /**
  * @brief Strategy
@@ -118,13 +119,13 @@ class Context {
    */
   void do_something() const {
     if (!strategy_) {
-      std::cout << "Context: Strategy isn't set\n";
+      fprintf(stdout, "Context: Strategy isn't set\n");
       return;
     }
 
-    std::cout << "Context: Execute strategy:\n";
+    fprintf(stdout, "Context: Execute strategy:\n");
     strategy_->execute();
-    std::cout << "\n";
+    fprintf(stdout, "\n");
   }
 
  private:
@@ -214,18 +215,18 @@ class ConcreteStrategyB : public Strategy {
 void client_run() {
   {
     Context context(nullptr);
-    std::cout << "Client: Running without Strategy.\n";
+    fprintf(stdout, "Client: Running without Strategy.\n");
     context.do_something();
-    std::cout << "\n";
+    fprintf(stdout, "\n");
   }
 
   {
     Context context(std::make_unique<ConcreteStrategyA>(100));
-    std::cout << "Client: Running using Strategy A.\n";
+    fprintf(stdout, "Client: Running using Strategy A.\n");
     context.do_something();
-    std::cout << "\n";
+    fprintf(stdout, "\n");
 
-    std::cout << "Client: Running using Strategy B.\n";
+    fprintf(stdout, "Client: Running using Strategy B.\n");
     context.set_strategy(std::make_unique<ConcreteStrategyB>("abcd"));
     context.do_something();
   }

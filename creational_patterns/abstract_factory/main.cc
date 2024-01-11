@@ -61,11 +61,21 @@
  * @brief This example reflects the design in "abstract_factory_structure.png"
  */
 
+//////////////////////////////////////////////////////////////////////
+
 /**
  * @brief Abstract class defining a family <ProductA>
  */
 class AbstractProductA {
  public:
+  /**
+   * @brief Constructor
+   */
+  AbstractProductA() = default;
+
+  AbstractProductA(const AbstractProductA &) = delete;
+  AbstractProductA(AbstractProductA &&) = delete;
+
   /**
    * @brief Destructor
    */
@@ -88,6 +98,11 @@ class ConcreteProductA1 : public AbstractProductA {
    * @brief Constructor
    */
   ConcreteProductA1() = default;
+
+  ConcreteProductA1(const ConcreteProductA1 &) = delete;
+  ConcreteProductA1(ConcreteProductA1 &&) = delete;
+  ConcreteProductA1 operator=(const ConcreteProductA1 &) = delete;
+  ConcreteProductA1 operator=(ConcreteProductA1 &&) = delete;
 
   /**
    * @brief Destructor
@@ -113,6 +128,11 @@ class ConcreteProductA2 : public AbstractProductA {
    * @brief Constructor
    */
   ConcreteProductA2() = default;
+
+  ConcreteProductA2(const ConcreteProductA2 &) = delete;
+  ConcreteProductA2(ConcreteProductA2 &&) = delete;
+  ConcreteProductA2 operator=(const ConcreteProductA2 &) = delete;
+  ConcreteProductA2 operator=(ConcreteProductA2 &&) = delete;
 
   /**
    * @brief Destructor
@@ -140,6 +160,14 @@ class ConcreteProductA2 : public AbstractProductA {
  */
 class AbstractProductB {
  public:
+  /**
+   * @brief Constructor
+   */
+  AbstractProductB() = default;
+
+  AbstractProductB(const AbstractProductB &) = delete;
+  AbstractProductB(AbstractProductB &&) = delete;
+
   /**
    * @brief Destructor
    */
@@ -177,6 +205,11 @@ class ConcreteProductB1 : public AbstractProductB {
    * @brief Constructor
    */
   ConcreteProductB1() = default;
+
+  ConcreteProductB1(const ConcreteProductB1 &) = delete;
+  ConcreteProductB1(ConcreteProductB1 &&) = delete;
+  ConcreteProductB1 operator=(const ConcreteProductB1 &) = delete;
+  ConcreteProductB1 operator=(ConcreteProductB1 &&) = delete;
 
   /**
    * @brief Destructor
@@ -217,6 +250,11 @@ class ConcreteProductB2 : public AbstractProductB {
    * @brief Constructor
    */
   ConcreteProductB2() = default;
+
+  ConcreteProductB2(const ConcreteProductB2 &) = delete;
+  ConcreteProductB2(ConcreteProductB2 &&) = delete;
+  ConcreteProductB2 operator=(const ConcreteProductB2 &) = delete;
+  ConcreteProductB2 operator=(ConcreteProductB2 &&) = delete;
 
   /**
    * @brief Destructor
@@ -263,6 +301,9 @@ class AbstractFactory {
    */
   AbstractFactory() = default;
 
+  AbstractFactory(const AbstractFactory &) = delete;
+  AbstractFactory(AbstractFactory &&) = delete;
+
   /**
    * @brief Destructor
    */
@@ -300,6 +341,11 @@ class ConcreteFactory1 : public AbstractFactory {
    */
   ConcreteFactory1() = default;
 
+  ConcreteFactory1(const ConcreteFactory1 &) = delete;
+  ConcreteFactory1(ConcreteFactory1 &&) = delete;
+  ConcreteFactory1 operator=(const ConcreteFactory1 &) = delete;
+  ConcreteFactory1 operator=(ConcreteFactory1 &&) = delete;
+
   /**
    * @brief Destructor
    */
@@ -333,6 +379,11 @@ class ConcreteFactory2 : public AbstractFactory {
    * @brief Constructor
    */
   ConcreteFactory2() = default;
+
+  ConcreteFactory2(const ConcreteFactory2 &) = delete;
+  ConcreteFactory2(ConcreteFactory2 &&) = delete;
+  ConcreteFactory2 operator=(const ConcreteFactory2 &) = delete;
+  ConcreteFactory2 operator=(ConcreteFactory2 &&) = delete;
 
   /**
    * @brief Destructor
@@ -374,7 +425,7 @@ void run_client(const AbstractFactory &factory) {
 int main() {
   {
     std::cout << "Client: Testing client code with the 1st factory type:\n";
-    ConcreteFactory1 f1 = ConcreteFactory1();
+    ConcreteFactory1 f1;
     run_client(f1);
     std::cout << std::endl;
   }
@@ -382,7 +433,7 @@ int main() {
   {
     std::cout
         << "Client: Testing the same client code with the 2nd factory type:\n";
-    ConcreteFactory2 f2 = ConcreteFactory2();
+    ConcreteFactory2 f2;
     run_client(f2);
     std::cout << std::endl;
   }
