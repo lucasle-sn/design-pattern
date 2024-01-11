@@ -250,18 +250,18 @@ int main() {
   /**
    * Complex composites.
    */
-  auto leaf_1 = std::make_shared<Leaf>();
-  auto leaf_2 = std::make_shared<Leaf>();
-  auto leaf_3 = std::make_shared<Leaf>();
+  auto leaf_1 = std::make_unique<Leaf>();
+  auto leaf_2 = std::make_unique<Leaf>();
+  auto leaf_3 = std::make_unique<Leaf>();
 
-  auto branch_1 = std::make_shared<Composite>();
+  auto branch_1 = std::make_unique<Composite>();
   branch_1->add(leaf_1.get());
   branch_1->add(leaf_2.get());
 
-  auto branch_2 = std::make_shared<Composite>();
+  auto branch_2 = std::make_unique<Composite>();
   branch_2->add(leaf_3.get());
 
-  auto tree = std::make_shared<Composite>();
+  auto tree = std::make_unique<Composite>();
   tree->add(branch_1.get());
   tree->add(branch_2.get());
 
