@@ -5,3 +5,7 @@ add_executable(abstract-factory
 add_executable(builder
   builder/main.cc
 )
+
+add_executable(singleton
+  singleton/main.cc
+)
