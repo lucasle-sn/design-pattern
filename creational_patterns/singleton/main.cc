@@ -3,6 +3,30 @@
 #include <thread>
 
 /**
+ * @brief Singleton is a creational design pattern that lets you ensure that a
+ * class has only one instance, while providing a global access point to this
+ * instance.
+ *
+ * # PROBLEM:
+ *  (1) Ensure that a class has just a single instance
+ *  (2) Provide a global access point to that instance
+ *
+ * # STRUCTURE:
+ * The Singleton class declares the static method getInstance that returns the
+ * same instance of its own class.
+ * The Singleton’s constructor should be hidden from the client code. Calling
+ * the getInstance method should be the only way of getting the Singleton
+ * object.
+ *
+ * # APPLICABILITY:
+ *  + when a class in your program should have just a single instance available
+ * to all clients; for example, a single database object shared by different
+ * parts of the program.
+ * + when you need stricter control over global variables.
+ *
+ */
+
+/**
  * # Implemetation
  *
  * The Singleton class declares the static method getInstance that returns the
@@ -13,6 +37,12 @@
  * object.
  *
  */
+
+/**
+ * @brief This example reflects the design in "singleton.png"
+ */
+
+//////////////////////////////////////////////////////////////////////
 
 class Singleton {
  private:
