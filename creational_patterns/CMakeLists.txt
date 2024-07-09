@@ -9,3 +9,7 @@ add_executable(builder
 add_executable(factory_method
   factory_method/main.cc
 )
+
+add_executable(singleton
+  singleton/main.cc
+)
