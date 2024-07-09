@@ -6,6 +6,10 @@ add_executable(builder
   builder/main.cc
 )
 
+add_executable(factory_method
+  factory_method/main.cc
+)
+
 add_executable(singleton
   singleton/main.cc
 )
